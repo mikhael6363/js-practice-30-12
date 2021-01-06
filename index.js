@@ -2,13 +2,13 @@
 
 /* Даны числа 4, -2, 5, 19, -130, 0, 10. Найдите минимальное и максимальное число */
 
-/* Первое решение
-const arrNums = [4, -2, 19, -130, 0, 10];
+// Первое решение (Math.min & Math.max) 
+const arrNums1 = [4, -2, 19, -130, 0, 10];
 
-function getMinMaxNums(arr) {
+function getMinMaxNums1(arr) {
   const minNumber = getMin(arr); 
   const maxNumber = getMax(arr);
-  return `Array arguments: [${arr}];\nМin value = ${minNumber};\nMax value = ${maxNumber};`;
+  return [minNumber, maxNumber];
 }
 
 function getMin(arr) {
@@ -18,19 +18,17 @@ function getMin(arr) {
 function getMax(arr) {
   return Math.max.apply(null, arr);
 }
+console.log(getMinMaxNums1(arrNums1));
 
-console.log(getMinMaxNums(arrNums));
-*/
 
-/* второе решение */
-const arrNums = [4, -2, 19, -130, 0, 10];
+// Второе решение
+const arrNums2 = [4, 1, 55, 0, 10];
 
-function getMinMaxNums(arr) {
+function getMinMaxNums2(arr) {
   const minNumber = getMin(arr); 
   const maxNumber = getMax(arr);
-  return `Array arguments: [${arr}];\nМin value = ${minNumber};\nMax value = ${maxNumber};`;
+  return [minNumber, maxNumber];
 }
-
 function getMin(arr) {
   let min = arr[0];
   for(let i = 0; i < arr.length; i++){
@@ -40,7 +38,6 @@ function getMin(arr) {
   }
   return min;
 }
-
 function getMax(arr) {
   let max = arr[0];
   for(let i = 0; i < arr.length; i++){
@@ -50,17 +47,21 @@ function getMax(arr) {
   }
   return max;
 }
+console.log(getMinMaxNums2(arrNums2));
+
 
 /* Найдите среднее арифметическое его элементов. Проверьте задачу на массиве с элементами 12, 15, 20, 25, 59, 79. */
-const arrayValues = [12, 15, 20, 25, 59, 79];
+const arrayValues = [12, 22, 33];
 
 function getAverageOfValues(arr){
   let sum = 0;
-  for(let i = 0; i < arr.length; i++){
+  for(let i = 1; i < arr.length; i++){
     sum += arr[i];
   }
-  return Math.ceil(sum / arr.length);
+  return sum / arr.length;
 }
+console.log(getAverageOfValues(arrayValues));
+
 
 /* 1. Выведите на экран случайное целое число от 1 до 100
   2. Заполните массив 10-ю случайными целыми числами. */
@@ -81,8 +82,10 @@ const arrayToConcat1 = [1, 2, 3];
 const arrayToConcat2 = [4, 5, 6];
 
 function getArraysConcat(arr1, arr2) {
-  return console.log(arr1.concat(arr2));
+  return arr1.concat(arr2);
 }
+console.log(getArraysConcat(arrayToConcat1, arrayToConcat2));
+
 
 /*
   Работа с reverse:
@@ -91,8 +94,10 @@ function getArraysConcat(arr1, arr2) {
 const arrayToReverse = [1, 2, 3];
 
 function getArrrayReverse(arr) {
-  return console.log(`Reversed: ${arr.reverse()}`);
+  return arr.reverse();
 }
+console.log(getArrrayReverse(arrayToReverse));
+
 
 /* Работа с push, unshift:
   3. Дан массив [1, 2, 3]. Добавьте ему в конец элементы 4, 5, 6.
@@ -102,13 +107,16 @@ const arrayToPushUnshift = [1, 2, 3];
 
 function getArrayPush(arr) {
   arr.push(4, 5, 6);
-  return console.log(arr);
+  return arr;
 }
+console.log(getArrayPush(arrayToPushUnshift));
 
 function getArrayUnshift(arr) {
   arr.unshift(4, 5, 6);
-  return console.log(arr);
+  return arr;
 }
+console.log(getArrayUnshift(arrayToPushUnshift));
+
 
 /*
   Работа с shift, pop:
@@ -119,14 +127,15 @@ const arrayToShift = ['js', 'css', 'jq'];
 const arrayToPop = ['js', 'css', 'jq'];
 
 function getArrayShift(arr) {
-  arr.shift(4, 5, 6);
-  return console.log(arr);
+  return arr.shift(4, 5, 6);
 }
+console.log(getArrayShift(arrayToShift));
 
 function getArrayPop(arr) {
-  arr.pop(4, 5, 6);
-  return console.log(arr);
+  return arr.pop(4, 5, 6);;
 }
+console.log(getArrayPop(arrayToPop));
+
 
 /*
   Работа со slice:
@@ -137,11 +146,15 @@ const arrayToSlice1 = [1, 2, 3, 4, 5];
 const arrayToSlice2 = [1, 2, 3, 4, 5];
 
 function getArraySlice1(arr) {
-  return console.log(arr.slice(0, 3));
+  return arr.slice(0, 3);
 }
+console.log(getArraySlice1(arrayToSlice1));
+
 function getArraySlice2(arr) {
-  return console.log(arr.slice(3));
+  return arr.slice(3);
 }
+console.log(getArraySlice2(arrayToSlice2));
+
 
 /* Работа со splice: */
 // 9. Дан массив [1, 2, 3, 4, 5]. С помощью метода splice преобразуйте массив в [1, 4, 5].
@@ -149,24 +162,30 @@ const arrayToSplice1 = [1, 2, 3, 4, 5];
 
 function getArraySplice1(arr) {
   arr.splice(1, 2);
-  return console.log(arr);
+  return arr;
 }
+console.log(getArraySplice1(arrayToSplice1));
+
 
 // 10. Дан массив [1, 2, 3, 4, 5]. С помощью метода splice запишите в новый массив элементы [2, 3, 4].
 const arrayToSplice2 = [1, 2, 3, 4, 5];
 
 function getArraySplice2(arr) {
   const newArrayToSplice2 = arr.splice(1, 3);
-  console.log(`newArrayToSplice2 = [${newArrayToSplice2}]`);
+  return newArrayToSplice2;
 }
+console.log(getArraySplice2(arrayToSplice2));
+
 
 // 11. Дан массив [1, 2, 3, 4, 5]. С помощью метода splice сделайте из него массив [1, 2, 3, 'a', 'b', 'c', 4, 5].
 const arrayToSplice3 = [1, 2, 3, 4, 5];
 
 function getArraySplice3(arr) {
   arr.splice(3, 0, 'a', 'b', 'c');
-  return console.log(arr);
+  return arr;
 }
+console.log(getArraySplice3(arrayToSplice3));
+
 
 // 12. Дан массив [1, 2, 3, 4, 5]. С помощью метода splice сделайте из него массив [1, 'a', 'b', 2, 3, 4, 'c', 5, 'e'].
 const arrayToSplice4 = [1, 2, 3, 4, 5];
@@ -175,8 +194,10 @@ function getArraySplice4(arr) {
   arr.splice(1, 0, 'a', 'b');
   arr.splice(6, 0, 'c');
   arr.splice(8, 0, 'e');
-  return console.log(arr);
+  return arr;
 }
+console.log(getArraySplice4(arrayToSplice4));
+
 
 /*
   Работа с sort:
@@ -185,8 +206,10 @@ function getArraySplice4(arr) {
 const arrayToSort = [3, 4, 1, 2, 7];
 
 function getArraySort(arr) {
-  return console.log(arr.sort());
+  return arr.sort();
 }
+console.log(getArraySort(arrayToSort));
+
 
 /*
   Работа с Object.keys:
@@ -195,8 +218,10 @@ function getArraySort(arr) {
 const newObject = {js:'test', jq: 'hello', css: 'world'};
 
 function getObjectKeys(object) {
-  return console.log(Object.keys(object));
+  return Object.keys(object);
 }
+console.log(getObjectKeys(newObject));
+
 
 /*
   1. Необходимо создать функцию hasElem, которая параметрами будет принимать массив и строку, и возвращать true, если строка есть в массиве, и false - если нет
@@ -209,15 +234,32 @@ function hasElem(arr, str) {
   }
   return false;
 }
+console.log(hasElem([11, 22, 33], 'string')); // false
+console.log(hasElem([11, 22, 'string'], 'string')); // true
+
 
 /*
   2. Дан массив с числами. Проверьте, что в этом массиве есть указанное число. Если есть - вернуть true, а если нет - вернуть false.
 */
 const arrayIncludeValue = [1, 2, 3];
+
 function hasNum(arr) {
-  return console.log(arr.includes(2));
+  return arr.includes(2);
 }
+console.log(hasNum(arrayIncludeValue)); // true
+
 
 /*
   3. Дан массив с числами. Проверьте, есть ли в нем два одинаковых числа подряд. Если есть -  вернуть true, а если нет - вернуть false.
 */
+const arrayWithNums = [0, 1, 3, 3];
+
+function hasDuplicateOfNums(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      return true;
+    }
+  }
+  return false;
+}
+console.log(hasDuplicateOfNums(arrayWithNums));
